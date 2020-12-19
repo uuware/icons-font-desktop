@@ -1,0 +1,31 @@
+{
+  "name": "icons-font-desktop",
+  "version": "1.0.0",
+  "description": "A desktop version for icons-font-customization to generate your onw web fonts",
+  "main": "main.js",
+  "scripts": {
+    "maintain": "node ./src/maintain/maintain.js --maintain",
+    "build:win": "electron-builder --win --config configuration/builder.json",
+    "build:linux": "electron-builder --linux --config configuration/builder.json",
+    "build:mac": "export CSC_IDENTITY_AUTO_DISCOVERY=false && electron-builder --mac --x64 --config configuration/builder.json",
+    "start": "node ./src/maintain/build.js && electron ."
+  },
+  "repository": "https://github.com/uuware/icons-font-desktop",
+  "keywords": [
+    "svg",
+    "woff",
+    "eot",
+    "icon",
+    "font",
+    "customization"
+  ],
+  "author": "uuware <uuware@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^10.1.7",
+    "electron-builder": "^22.9.1"
+  },
+  "dependencies": {
+    "icons-font-customization": "^1.1.9"
+  }
+}

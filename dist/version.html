@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>icons-font-desktop</title>
+</head>
+<body style="margin:0;">
+    <div id="divUpdate" style="display: none;">New version is available! <a href="https://github.com/uuware/icons-font-desktop" target="_blank">Goto download</a></div>
+    <div id="divCurrent" style="display: none;">This version is up to date!</div>
+    <script>
+        var currentVersion = '1.0.0';
+        var msg = '';
+        function showVersion() {
+            var url = window.location.href;
+            var index = url.indexOf('?ver=');
+            if (index > 0) {
+                var queryArray = url.substring(index + 5).split('.');
+                var verUser = queryArray[0] * 1000000 + queryArray[1] * 1000 + queryArray[2] * 1;
+
+                var currentArray = currentVersion.split('.');
+                var verCurrent = currentArray[0] * 1000000 + currentArray[1] * 1000 + currentArray [2] * 1;
+                if (verUser >= verCurrent) {
+                    document.getElementById('divCurrent').style.display = 'block';
+                } else {
+                    document.getElementById('divUpdate').style.display = 'block';
+                }
+            }
+        }
+        showVersion();
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHF2YC1F38"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-LHF2YC1F38');</script>
+</body>
+</html>

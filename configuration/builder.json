@@ -1,0 +1,81 @@
+{
+  "appId": "com.uuware.icons-font-desktop",
+  "productName": "icons-font-desktop",
+  // "asar": true,
+  "files": [
+    // "!**/*",
+    "main.js",
+    "src/app-utils.js",
+    "preload.js",
+    "renderer.js",
+    "LICENSE",
+    "dist/index.html",
+    "node_modules/icons-font-command/",
+    "node_modules/icons-font-customization/dist/svgs/",
+    "node_modules/icons-font-customization/dist/index.woff"
+  ],
+  "copyright": "Copyright © 2020-2021 uuware@gmail.com",
+  "artifactName": "${name}-${os}-${arch}-${version}.${ext}",
+  "afterPack": "./configuration/after-pack.js",
+  "win": {
+    "target": [
+      "nsis:ia32", "nsis:x64",
+      "portable:ia32", "portable:x64",
+      "msi:ia32", "msi:x64",
+      // "appx",
+      "7z:ia32", "7z:x64",
+      "zip:ia32", "zip:x64"
+    ],
+    "icon": "configuration/electron/windows/icon.ico"
+  },
+  "portable" : {
+    "artifactName": "${productName}-Portable-${version}.${ext}"
+  },
+  "msi" : {
+    "oneClick": false,
+    "warningsAsErrors": false
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowElevation": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    // "license": "LICENSE.md",
+    // "include": "configuration/electron/windows/installer.nsh",
+    "differentialPackage": false,
+    "artifactName": "${productName}-Installer-${version}.${ext}",
+    "allowToChangeInstallationDirectory": true
+  },
+  "mac": {
+    "target": ["zip", "mas", "dmg"],
+    "icon": "configuration/electron/osx/icon.icns",
+    "category": "public.app-category.lifestyle",
+    "darkModeSupport": true,
+    "entitlements": "./configuration/electron/osx/entitlements.mac.plist",
+    "entitlementsInherit": "./configuration/electron/osx/entitlements.mac.plist",
+    "hardenedRuntime": true
+  },
+  "mas": {
+    "entitlements": "./configuration/electron/osx/entitlements.mas.plist",
+    "entitlementsInherit": "./configuration/electron/osx/entitlements.mas.inherit.plist",
+    "hardenedRuntime": false
+  },
+  "linux": {
+    // rpm needs yum install rpm
+    // "deb", "rpm", "snap", 
+    "target": ["tar.gz", "appImage"],
+    "category": "Utility",
+    "icon": "configuration/electron/osx/icon.icns"
+  },
+  "dmg": {
+    // "differentialPackage": false,
+    "icon": "configuration/electron/osx/icon.icns"
+  },
+  "appx": {
+    "publisherDisplayName":"Icons Font Desktop"
+  },
+  "directories": {
+    "buildResources": "configuration/electron",
+    "output": "./dist/build"
+  }
+}

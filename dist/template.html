@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="description"
+    content="icons-font-desktop: A collection of free svg icons and tools for generating icon font.">
+  <title>Desktop version of icons-font-customization</title>
+</head>
+
+<body>
+  <style>
+    #version {
+      border: 0;
+      height: 23px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+    #div-fonts .title {
+      display: inline-block;
+      min-width: 130px;
+    }
+    .one-row {
+      padding-bottom: 2px;
+    }
+    .short-number {
+      width: 60px;
+    }
+  </style>
+  <iframe id="version" src="about:blank"></iframe>
+  <div style="display: none;">
+    <div id="div-show-generating">
+      <span><input type="button" onclick="showFontsPanel()" value="Show Generating Fonts"></span>
+    </div>
+    <div id="div-fonts">
+      <input type="button" id="generateFonts" onclick="generateFonts()" value="Start Generating Fonts">
+      <input id="show-selected" type="button" onclick="onShowSelected()" value="Show Selected"><br>
+      <div class="one-row"><span class="title">Save Location:</span>
+        <input id="saveLocation" onchange="saveChanges()" type="text" value="">
+        <input type="button" onclick="selectLocation()" value="...">
+        <input type="button" onclick="openLocation()" value="Open">
+      </div>
+      <div class="one-row"><span class="title">File Name:</span>
+        <input id="fileName" onchange="saveChanges()" type="text" value="">
+      </div>
+      <div class="one-row"><span class="title">Font Name:</span>
+        <input id="fontName" onchange="saveChanges()" type="text" value="">
+      </div>
+      <div class="one-row"><span class="title">Font Start Index:</span>
+        <input id="startIndex" onchange="saveChanges()" class="short-number" type="number" value="">
+      </div>
+      <div class="one-row"><span class="title">Font Height:</span>
+        <input id="fontHeight" onchange="saveChanges()" class="short-number" type="number" value="">
+      </div>
+      <div class="one-row"><span class="title">Format: </span>
+        <label>woff2: <input id="chk-woff2" onchange="saveChanges()" type="checkbox" value="1" checked></label>,
+        <label>woff: <input id="chk-woff" onchange="saveChanges()" type="checkbox" value="1"></label>,
+        <label>ttf: <input id="chk-ttf" onchange="saveChanges()" type="checkbox" value="1"></label>,
+        <label>eot: <input id="chk-eot" onchange="saveChanges()" type="checkbox" value="1"></label>,
+        <label>svg: <input id="chk-svg" onchange="saveChanges()" type="checkbox" value="1"></label>
+      </div>
+
+      <div class="one-row"><span class="title">Populate Image:</span>
+        <select id="sel-fmt" onchange="saveChanges()"><option value="">---</option><option value="png">PNG</option><option value="jpeg">JPG</option><option value="x-icon">ICO</option></select>
+        (Width: <input id="pngW" onchange="saveChanges()" class="short-number" type="number" value="32">px, Height: <input id="pngH" onchange="saveChanges()" class="short-number" type="number" value="32">px)
+      </div>
+      <div class="one-row"><span class="title"></span>
+        PNG/ICO background transparent: <input id="pngTrans" onchange="saveChanges()" type="checkbox">
+      </div>
+    </div>
+  </div>
+  <style>
+    @font-face {
+      font-family: 'i-font';
+      src: url('../node_modules/icons-font-customization/dist/index.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+  </style>
+  <!-- ICONS-LIST -->
+
+  <script>
+    
+    function byId(id) {
+      return document.getElementById(id);
+    }
+    function init() {
+      byId('app-title').innerHTML = `free-icons-desktop <span class="app-title">By uuware</span> <a class="link" href="https://github.com/uuware/icons-font-desktop">project</a>`;
+      byId('app-description').innerHTML = `Desktop version of free-icons-customization, a collection of free svg icons and tools for generating icon font. Click on the icon at top-right corner to
+    change color or size.`;
+      iconsSrcSave = true;
+      localStorage.setItem('iconsSrcSave', '1');
+      byId('saveSelected').checked = iconsSrcSave;
+      var autoSave = document.querySelector('.control-box.search div.auto-save');
+      autoSave.style.display = 'none';
+
+      var panelSearch = document.querySelector('.control-box.search');
+      panelSearch.appendChild(byId('div-show-generating'));
+
+      var panelFonts = document.querySelector('#fonts-container');
+      panelFonts.appendChild(byId('div-fonts'));
+
+      byId('saveLocation').value = localStorage.getItem('saveLocation') || '';
+      byId('fileName').value = localStorage.getItem('fileName') || 'i-font';
+      byId('fontName').value = localStorage.getItem('fontName') || 'i-font';
+      byId('startIndex').value = localStorage.getItem('startIndex') || '10000';
+      byId('fontHeight').value = localStorage.getItem('fontHeight') || '1024';
+
+      byId('chk-woff2').checked = localStorage.getItem('chk-woff2') != 'false';
+      byId('chk-woff').checked = localStorage.getItem('chk-woff') == 'true';
+      byId('chk-ttf').checked = localStorage.getItem('chk-ttf') == 'true';
+      byId('chk-eot').checked = localStorage.getItem('chk-eot') == 'true';
+      byId('chk-svg').checked = localStorage.getItem('chk-svg') == 'true';
+
+      byId('sel-fmt').value = localStorage.getItem('sel-fmt') || '';
+      byId('pngW').value = localStorage.getItem('pngW') || '32';
+      byId('pngH').value = localStorage.getItem('pngH') || '32';
+      byId('pngTrans').checked = localStorage.getItem('pngTrans') !== 'false';
+      showVersion();
+    }
+    init();
+
+    function saveChanges() {
+      localStorage.setItem('saveLocation', byId('saveLocation').value);
+      localStorage.setItem('fileName', byId('fileName').value);
+      localStorage.setItem('fontName', byId('fontName').value);
+      localStorage.setItem('startIndex', byId('startIndex').value);
+      localStorage.setItem('fontHeight', byId('fontHeight').value);
+
+      localStorage.setItem('chk-woff2', byId('chk-woff2').checked);
+      localStorage.setItem('chk-woff', byId('chk-woff').checked);
+      localStorage.setItem('chk-ttf', byId('chk-ttf').checked);
+      localStorage.setItem('chk-eot', byId('chk-eot').checked);
+      localStorage.setItem('chk-svg', byId('chk-svg').checked);
+
+      localStorage.setItem('sel-fmt', byId('sel-fmt').value);
+      localStorage.setItem('pngW', byId('pngW').value);
+      localStorage.setItem('pngH', byId('pngH').value);
+      localStorage.setItem('pngTrans', byId('pngTrans').checked);
+    }
+
+    function showFontsPanelHtml() {
+      return '  <input type="button" onclick="showFontsPanel()" value="Show Generating Fonts"> ';
+    }
+    function showFontsPanel() {
+      byId('search').value = '';
+      var list = byId('search-container');
+      list.innerHTML = '';
+      list.classList.add('hide');
+      document.getElementById('fonts-container').classList.remove('hide');
+    }
+    function selectLocation() {
+      var path = sendCommand({id: 'selectDirectoryDialog', title: 'Select a directory to save icons:', path: byId('saveLocation').value});
+      if (path) {
+        byId('saveLocation').value = path;
+        localStorage.setItem('saveLocation', path);
+      }
+    }
+    function openLocation() {
+      var msg = sendCommand({id: 'openLocation', path: byId('saveLocation').value});
+      if (msg) {
+        alert(msg);
+      }
+    }
+
+    function createOneImage(src, imageSizeW, imageSizeH, fmt, rgbColor, rgbBackColor) {
+      return new Promise((resolve, reject) => {
+        var hidingBox = document.getElementById('hiding-box');
+        var img = document.createElement('img');
+        img.onload = function() {
+          var imgData = getImageData(img, rgbColor, rgbBackColor, fmt);
+          hidingBox.removeChild(img);
+          if (fmt === 'x-icon') {
+            imgData = generateIco(imgData, imageSizeW, imageSizeH, false);
+          }
+          resolve(imgData);
+        }
+        img.width = imageSizeW;
+        img.height = imageSizeH;
+        img.src = src;
+        hidingBox.innerHTML = '';
+        hidingBox.appendChild(img);
+      });
+    }
+
+    async function generateFonts() {
+      var saveLocation = byId('saveLocation').value.trim();
+      if (saveLocation === '') {
+        alert('Please select ocation to save.');
+        return;
+      }
+      var fileName = byId('fileName').value.trim();
+      if (fileName === '') {
+        alert('Please input file name.');
+        return;
+      }
+      var fontName = byId('fontName').value.trim();
+      if (fontName === '') {
+        alert('Please input font name.');
+        return;
+      }
+
+      var paraObj = {icons: [], cfg: '', cnt: 0};
+      getCfgStr(paraObj);
+      if (!paraObj.icons || paraObj.cnt < 1) {
+        alert('Select icons first then generate fonts.');
+        return;
+      }
+
+      if (!confirm('Do you start to generate fonts (Same files will be overwritten)?')) {
+        return;
+      }
+      var selFmt = byId('sel-fmt').value;
+      if (selFmt !== '') {
+        var imageTransparent = byId('pngTrans').checked;
+        var rgbColor = getUserColor('');
+        var rgbBackColor = (selFmt === 'png' || selFmt === 'x-icon') && imageTransparent ? '' : getUserColor('b-');
+        var imageSizeW = byId('pngW').value / 1;
+        var imageSizeH = byId('pngH').value / 1;
+        for (var i = 0, len = paraObj.icons.length; i < len; i++) {
+          var icon = paraObj.icons[i];
+          // { path: src, name: name, data: }
+          var src = '../node_modules/icons-font-customization/dist/svgs/' + icon.path;
+          var imgData = await createOneImage(src, imageSizeW, imageSizeH, selFmt, rgbColor, rgbBackColor);
+          if (!imgData) {
+            return;
+          }
+          icon.data = imgData;
+        }
+      }
+
+      paraObj['pngW'] = imageSizeW;
+      paraObj['pngH'] = imageSizeH;
+      paraObj['sel-fmt'] = selFmt;
+      paraObj.outputPath = saveLocation;
+      paraObj.outputName = fileName;
+      paraObj.fontName = fontName;
+      paraObj.startChar = byId('startIndex').value;
+      paraObj.fontHeight = byId('fontHeight').value;
+      paraObj['chk-woff2'] = byId('chk-woff2').value;
+      paraObj['chk-woff'] = byId('chk-woff').value;
+      paraObj['chk-ttf'] = byId('chk-ttf').value;
+      paraObj['chk-eot'] = byId('chk-eot').value;
+      paraObj['chk-svg'] = byId('chk-svg').value;
+      var result = sendCommand({id: 'generateFonts', paras: paraObj});
+      alert(`Generated fonts, and open ${saveLocation} to confirm fonts.`);
+    }
+  </script>
+</body>
+
+</html>

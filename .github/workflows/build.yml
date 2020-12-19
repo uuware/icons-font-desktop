@@ -1,0 +1,92 @@
+name: Build
+
+# git tag v1.0.1
+# git push origin --tags
+on:
+ push:
+   tags:
+     - v[0-9]+.[0-9]+.[0-9]+*
+
+jobs:
+
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+  
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js 12
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12
+      # - name: get-npm-version
+      #   id: package-version
+      #   uses: martinbeentjes/npm-get-version-action@master
+      - run: npm i
+
+      # or run this to avoid publish: "electron-builder --linux --config configuration/builder.json --publish=never",
+      - name: build windows app
+        if: matrix.os == 'windows-latest'
+        continue-on-error: true
+        run: npm run build:win
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: build linux app
+        if: matrix.os == 'ubuntu-latest'
+        continue-on-error: true
+        run: npm run build:linux
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: build macos app
+        if: matrix.os == 'macos-latest'
+        continue-on-error: true
+        run: npm run build:mac
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: list
+        if: matrix.os == 'windows-latest'
+        continue-on-error: true
+        run: dir dist/build/
+
+      - name: list
+        if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
+        run: ls -l dist/build/
+
+      - name: cleanup artifacts
+        run: |
+            npx rimraf "dist/build/win-ia32-unpacked"
+            npx rimraf "dist/build/win-unpacked"
+            npx rimraf "dist/build/linux-unpacked"
+            npx rimraf "dist/build/mas"
+            npx rimraf "dist/build/mac"
+
+      - name: upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: icons-font-desktop
+          path: dist/build/
+          # path: release/icons-font-desktop-${{ steps.package-version.outputs.current-version }}.exe
+
+      - name: release
+        uses: softprops/action-gh-release@v1
+        # If the commit is tagged with a version (e.g. "v1.0.0"),
+        # release the app after building
+        # if: startsWith(github.ref, 'refs/tags/v')
+        with:
+          draft: true
+          files: "dist/build/**"
+        env:
+          # GitHub token, automatically provided to the action
+          # (No need to define this secret in the repo settings)
+          GITHUB_TOKEN: ${{ secrets.github_token }}
+
+# - run: echo "::set-env name=VERSION::$(node dist/package-version.js)"
+# path: release/icons-font-desktop-${{ env.VERSION }}.dmg
