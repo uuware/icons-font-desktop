@@ -63,9 +63,28 @@
         <label>svg: <input id="chk-svg" onchange="saveChanges()" type="checkbox" value="1"></label>
       </div>
 
-      <div class="one-row"><span class="title">Populate Image:</span>
-        <select id="sel-fmt" onchange="saveChanges()"><option value="">---</option><option value="png">PNG</option><option value="jpeg">JPG</option><option value="x-icon">ICO</option></select>
-        (Width: <input id="pngW" onchange="saveChanges()" class="short-number" type="number" value="32">px, Height: <input id="pngH" onchange="saveChanges()" class="short-number" type="number" value="32">px)
+      <div class="one-row"><span class="title">Generate Images:</span>
+        <select id="sel-fmt" onchange="saveChanges(this)">
+          <option value="">---</option>
+          <option value="png">PNG</option>
+          <option value="jpeg">JPG</option>
+          <option value="x-icon">ICO</option>
+          <option value="icns">ICNS</option>
+        </select>
+        (<span class="size-w-h">Width: <input id="pngW" onchange="saveChanges()" class="short-number" type="number" value="32">px, 
+          Height: <input id="pngH" onchange="saveChanges()" class="short-number" type="number" value="32">px</span>
+        <span class="size-wh">Size(px):
+          16<input onclick="saveChanges(this)" class="i-size-16" type="checkbox" title="size: 16x16">
+          <span class="i-size-24p">24<input onclick="saveChanges(this)" class="i-size-24" type="checkbox" title="size: 24x25"></span>
+          32<input onclick="saveChanges(this)" class="i-size-32" type="checkbox" title="size: 32x32">
+          <span class="i-size-48p">48<input onclick="saveChanges(this)" class="i-size-48" type="checkbox" title="size: 48x48"></span>
+          64<input onclick="saveChanges(this)" class="i-size-64" type="checkbox" title="size: 64x64">
+          <span class="i-size-96p">96<input onclick="saveChanges(this)" class="i-size-96" type="checkbox" title="size: 96x96"></span>
+          128<input onclick="saveChanges(this)" class="i-size-128" type="checkbox" title="size: 128x128">
+          256<input onclick="saveChanges(this)" class="i-size-256" type="checkbox" title="size: 256x256">
+          <span class="i-size-512p">512<input onclick="saveChanges(this)" class="i-size-512" type="checkbox" title="size: 512x512"></span>
+          <span class="i-size-1024p">1024<input onclick="saveChanges(this)" class="i-size-1024" type="checkbox" title="size: 1024x1024"></span>
+        </span>)
       </div>
       <div class="one-row"><span class="title"></span>
         PNG/ICO background transparent: <input id="pngTrans" onchange="saveChanges()" type="checkbox">
@@ -119,11 +138,18 @@
       byId('pngW').value = localStorage.getItem('pngW') || '32';
       byId('pngH').value = localStorage.getItem('pngH') || '32';
       byId('pngTrans').checked = localStorage.getItem('pngTrans') !== 'false';
+
+      var pSize = byId('div-fonts');
+      for (var i = 0; i < iconSizeArray.length; i++) {
+        var chk = localStorage.getItem('imgSizeChk-' + iconSizeArray[i]) == 'true';
+        pSize.querySelector('.i-size-' + iconSizeArray[i]).checked = chk;
+      }
+      onOptShowSize(pSize, byId('sel-fmt').value);
       showVersion();
     }
     init();
 
-    function saveChanges() {
+    function saveChanges(obj) {
       localStorage.setItem('saveLocation', byId('saveLocation').value);
       localStorage.setItem('fileName', byId('fileName').value);
       localStorage.setItem('fontName', byId('fontName').value);
@@ -140,6 +166,16 @@
       localStorage.setItem('pngW', byId('pngW').value);
       localStorage.setItem('pngH', byId('pngH').value);
       localStorage.setItem('pngTrans', byId('pngTrans').checked);
+
+      var pSize = byId('div-fonts');
+      for (var i = 0; i < iconSizeArray.length; i++) {
+        var chk = pSize.querySelector('.i-size-' + iconSizeArray[i]).checked;
+        localStorage.setItem('imgSizeChk-' + iconSizeArray[i], chk);
+      }
+      if (obj && obj.type == 'select-one') {
+        var fmt = byId('sel-fmt').value;
+        onOptShowSize(pSize, fmt);
+      }
     }
 
     function showFontsPanelHtml() {
@@ -166,24 +202,67 @@
       }
     }
 
-    function createOneImage(src, imageSizeW, imageSizeH, fmt, rgbColor, rgbBackColor) {
+    function createOneImage(src, iconSizeObjs, imageSizeW, imageSizeH, fmt, rgbColor, rgbBackColor) {
       return new Promise((resolve, reject) => {
-        var hidingBox = document.getElementById('hiding-box');
-        var img = document.createElement('img');
-        img.onload = function() {
-          var imgData = getImageData(img, rgbColor, rgbBackColor, fmt);
-          hidingBox.removeChild(img);
-          if (fmt === 'x-icon') {
-            imgData = generateIco(imgData, imageSizeW, imageSizeH, false);
-          }
-          resolve(imgData);
+        if (fmt != 'x-icon' && fmt != 'icns') {
+          // for png or jpeg, download it directly
+          addOneImageDesktop(src, fmt, imageSizeW, imageSizeH, null, resolve);
+          return;
         }
-        img.width = imageSizeW;
-        img.height = imageSizeH;
-        img.src = src;
-        hidingBox.innerHTML = '';
-        hidingBox.appendChild(img);
+
+        // to collect all size of png and pixel data for x-icon or icns
+        var saveIconFn = function (imgObject, size) {
+          var collectedAll = true;
+          for (var i = 0; i < iconSizeObjs.length; i++) {
+            if (iconSizeObjs[i].size == size) {
+              iconSizeObjs[i].data = imgObject.pixelData;
+              iconSizeObjs[i].pngData = dataURLtoArray(imgObject.pngData);
+            }
+            if (!iconSizeObjs[i].data) {
+              collectedAll = false;
+            }
+          }
+          if (!collectedAll) {
+            return false;
+          }
+          // if collected all data for all sizes, then start to generate icon
+          var genIconFn = fmt != 'icns' ? new generateIco() : new generateIcns();
+          for (var i = 0; i < iconSizeObjs.length; i++) {
+            genIconFn.addImgData(iconSizeObjs[i].data, iconSizeObjs[i].size, iconSizeObjs[i].pngData);
+          }
+          var genData = genIconFn.getUrlData();
+          return genData;
+        };
+        for (var i = 0; i < iconSizeObjs.length; i++) {
+          addOneImageDesktop(src, fmt, iconSizeObjs[i].size, iconSizeObjs[i].size, saveIconFn, resolve);
+        }
       });
+    }
+
+    function addOneImageDesktop(src, fmt, width, height, fn, resolve) {
+      var hidingBox = document.getElementById('hiding-box');
+      var img = document.createElement('img');
+      img.onload = function () {
+        var rgbColor = getUserColor('');
+        var rgbBackColor = (fmt == 'png' || fmt == 'x-icon' || fmt == 'icns') && imageTransparent ? '' : getUserColor('b-');
+        var imgData = getImageData(img, rgbColor, rgbBackColor, fmt);
+        hidingBox.removeChild(img);
+
+        if (!imgData) {
+          return;
+        }
+        if (fmt === 'x-icon' || fmt === 'icns') {
+          imgData = fn(imgData, width);
+          if (!imgData) {
+            return;
+          }
+        }
+        resolve(imgData);
+      }
+      img.width = width;
+      img.height = height;
+      img.src = src;
+      hidingBox.appendChild(img);
     }
 
     async function generateFonts() {
@@ -220,11 +299,33 @@
         var rgbBackColor = (selFmt === 'png' || selFmt === 'x-icon') && imageTransparent ? '' : getUserColor('b-');
         var imageSizeW = byId('pngW').value / 1;
         var imageSizeH = byId('pngH').value / 1;
+
+        var iconSizeObjs = [];
+        if (selFmt === 'png' || selFmt === 'jpeg') {
+          if (imageSizeW < 1 || imageSizeH < 1) {
+            alert('Selected to generate images, but width or height is incorrect.');
+            return;
+          }
+        } else if (selFmt === 'x-icon' || selFmt === 'icns') {
+          for (var i = 0; i < iconSizeArray.length; i++) {
+            var chk = localStorage.getItem('imgSizeChk-' + iconSizeArray[i]) == 'true';
+            if (chk && ((selFmt == 'x-icon' && iconSizeArray[i] < 512) || (selFmt == 'icns' && iconSizeArray[i] != 24 && iconSizeArray[i] != 48 && iconSizeArray[i] != 96))) {
+              iconSizeObjs.push({
+                'size': iconSizeArray[i],
+                'data': null
+              });
+            }
+          }
+          if (iconSizeObjs.length < 1) {
+            alert('Selected to generate images, but need to check on sizes.');
+            return;
+          }
+        }
         for (var i = 0, len = paraObj.icons.length; i < len; i++) {
           var icon = paraObj.icons[i];
           // { path: src, name: name, data: }
           var src = '../node_modules/icons-font-customization/dist/svgs/' + icon.path;
-          var imgData = await createOneImage(src, imageSizeW, imageSizeH, selFmt, rgbColor, rgbBackColor);
+          var imgData = await createOneImage(src, iconSizeObjs, imageSizeW, imageSizeH, selFmt, rgbColor, rgbBackColor);
           if (!imgData) {
             return;
           }

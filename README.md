@@ -1,7 +1,7 @@
 # icons-font-desktop
 
 Desktop version of [icons-font-customization](https://github.com/uuware/icons-font-customization), a collection of over 33,000 high-quality free svg icons and tools for generating customized icon font. All icons are completely free for personal or business requirements.
-Open [See all icons](https://uuware.github.io/icons-font-customization/dist/), to view all icons. You can change color, background color, size for icons and can search or cache selected results, or download PNG / JPG / ICO image files directly from online.<br>
+Open [See all icons](https://uuware.github.io/icons-font-customization/dist/), to view all icons. You can change color, background color, size for icons and can search or cache selected results, or download PNG / JPG / ICO / Apple ICNS image files directly from online.<br>
 （中文说明请参考后半部分）
 
 icons-font-desktop is a desktop application, available for Linux, macOS and Windows. Without run Node.js / npm command, without open it in Visual Studio Code or Browser, you can easily generate your own web-fonts from selecting free svg icons. It supports woff2, woff, ttf, eot, svg fonts, and also you can populate PNG / JPG / ICO image files.
@@ -55,7 +55,7 @@ All used trademarks, brands and/or names are the property of their re
 ---
 
 icons-font-desktop是一个桌面程序，可以运行于Windows, Linux 和 MacOS，并且不需要运行npm命令，甚至不需要Node.js，只需要直接下载，运行就可以了。开箱即用，非常友好方便。
-这个桌面程序可以批量生成选择图标的字体，和PNG / JPG / ICO文件。
+这个桌面程序可以批量生成选择图标的字体，和PNG / JPG / ICO / Apple ICNS文件。
 
 如果您需要在项目中使用，或更多的关于图标，字体，建议的信息，请参照子项目 [icons-font-customization](https://github.com/uuware/icons-font-customization).
 

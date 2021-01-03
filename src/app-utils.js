@@ -179,8 +179,10 @@ exports.AppUtils = class AppUtils {
                             { role: 'delete' },
                             { type: 'separator' },
                             { role: 'selectAll' }
-                        ])
-                ]
+                        ]),
+                        { role: 'toggleDevTools' },
+                        { role: 'forceReload' },
+                    ]
             },
             {
                 label: 'About',
