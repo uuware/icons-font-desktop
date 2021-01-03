@@ -27,6 +27,6 @@
     "electron-builder": "^22.9.1"
   },
   "dependencies": {
-    "icons-font-customization": "^1.1.9"
+    "icons-font-customization": "^1.2.0"
   }
 }
