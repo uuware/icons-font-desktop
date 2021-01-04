@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XML_DIZ_INFO>
+  <MASTER_PAD_VERSION_INFO>
+    <MASTER_PAD_VERSION>4.0</MASTER_PAD_VERSION>
+    <MASTER_PAD_EDITOR>RoboSoft 4.0.797</MASTER_PAD_EDITOR>
+    <MASTER_PAD_EDITOR_URL>http://robosoft.rudenko.com</MASTER_PAD_EDITOR_URL>
+    <MASTER_PAD_INFO>Portable Application Description, or PAD for short, is a data set that is used by shareware authors to disseminate information to anyone interested in their software products. To find out more go to http://www.asp-shareware.org/pad</MASTER_PAD_INFO>
+  </MASTER_PAD_VERSION_INFO>
+  <RoboSoft>
+    <Company_UIN>CMP-0151045727</Company_UIN>
+    <Company_Description>Providing free software in personal</Company_Description>
+    <Product_UIN>APP-015104CD317</Product_UIN>
+    <Comments_For_Reviewer>Welcome to write reviews for this free software</Comments_For_Reviewer>
+    <Publish_on_CD>TRUE</Publish_on_CD>
+    <Search_String>icons-font-desktop</Search_String>
+    <RSProductType></RSProductType>
+    <Press_Release_Search_String></Press_Release_Search_String>
+    <NewsFeed_Search_String></NewsFeed_Search_String>
+    <Search_Engine_Search_String></Search_Engine_Search_String>
+    <Web_Directories_Search_String></Web_Directories_Search_String>
+    <Search_String_Unique></Search_String_Unique>
+    <Backlink></Backlink>
+  </RoboSoft>
+  <Company_Info>
+    <Company_Name>icons-font-desktop</Company_Name>
+    <Address_1>Tokyo</Address_1>
+    <Address_2></Address_2>
+    <City_Town>Tokyo</City_Town>
+    <State_Province></State_Province>
+    <Zip_Postal_Code></Zip_Postal_Code>
+    <Country>Japan</Country>
+    <Company_WebSite_URL>https://github.com/uuware/icons-font-desktop</Company_WebSite_URL>
+    <Contact_Info>
+      <Contact_First_Name>uuware</Contact_First_Name>
+      <Contact_Last_Name>uuware</Contact_Last_Name>
+      <Contact_Email>uuware@gmail.com</Contact_Email>
+      <Author_First_Name>uuware</Author_First_Name>
+      <Author_Last_Name>uuware</Author_Last_Name>
+      <Author_Email>uuware@gmail.com</Author_Email>
+    </Contact_Info>
+    <Support_Info>
+      <Sales_Email>uuware@gmail.com</Sales_Email>
+      <Support_Email>uuware@gmail.com</Support_Email>
+      <General_Email>uuware@gmail.com</General_Email>
+      <Sales_Phone></Sales_Phone>
+      <Support_Phone></Support_Phone>
+      <General_Phone></General_Phone>
+      <Fax_Phone></Fax_Phone>
+    </Support_Info>
+    <GooglePlusPage></GooglePlusPage>
+    <LinkedinPage></LinkedinPage>
+    <TwitterCompanyPage></TwitterCompanyPage>
+    <FacebookCompanyPage></FacebookCompanyPage>
+    <CompanyStorePage>https://github.com/uuware/icons-font-desktop</CompanyStorePage>
+  </Company_Info>
+  <NewsFeed>
+    <NewsFeed_FORM>Y</NewsFeed_FORM>
+    <NewsFeed_VERSION>1.0</NewsFeed_VERSION>
+    <NewsFeed_URL>http://Submit-Everywhere.com/extensions/NewsFeed.htm</NewsFeed_URL>
+    <NewsFeed_DESCRIPTION>This PAD extension allows you to add your RSS and Atom news feeds info into your PAD file. This info can be used by RSS feed submission software or by feed directories themselves.</NewsFeed_DESCRIPTION>
+    <NewsFeed_Type>RSS 0.90</NewsFeed_Type>
+    <NewsFeed_Language>English</NewsFeed_Language>
+    <NewsFeed_Purpose>News</NewsFeed_Purpose>
+    <NewsFeed_Author_First_Name>uuware</NewsFeed_Author_First_Name>
+    <NewsFeed_Author_Last_Name>uuware</NewsFeed_Author_Last_Name>
+    <NewsFeed_Author_Email>uuware@gmail.com</NewsFeed_Author_Email>
+    <NewsFeed_Feed_URL></NewsFeed_Feed_URL>
+    <NewsFeed_Site_Name></NewsFeed_Site_Name>
+    <NewsFeed_Site_URL></NewsFeed_Site_URL>
+    <NewsFeed_Title></NewsFeed_Title>
+    <NewsFeed_Description_70></NewsFeed_Description_70>
+    <NewsFeed_Description_250></NewsFeed_Description_250>
+  </NewsFeed>
+  <PAD_Certification_Promotion>
+    <Apply_For_Certification>N</Apply_For_Certification>
+  </PAD_Certification_Promotion>
+  <Dynamic_PAD>
+    <Dynamic_Distributive>N</Dynamic_Distributive>
+  </Dynamic_PAD>
+  <Program_Info>
+    <File_Info>
+      <Automatically_Detect_File_Size>Y</Automatically_Detect_File_Size>
+      <File_Size_K>113000</File_Size_K>
+      <File_Size_Bytes>115712000</File_Size_Bytes>
+      <File_Size_MB>110.35</File_Size_MB>
+      <Filename_Versioned></Filename_Versioned>
+      <Filename_Previous></Filename_Previous>
+      <Filename_Generic></Filename_Generic>
+      <Filename_Long></Filename_Long>
+    </File_Info>
+    <Program_Target_Platform>Windows</Program_Target_Platform>
+    <Program_Name>icons-font-desktop</Program_Name>
+    <Program_Version>1.1.3</Program_Version>
+    <Program_Release_Month>01</Program_Release_Month>
+    <Program_Release_Day>04</Program_Release_Day>
+    <Program_Release_Year>2021</Program_Release_Year>
+    <Program_Cost_Dollars>0</Program_Cost_Dollars>
+    <Program_Type>Freeware</Program_Type>
+    <Program_Release_Status>New Release</Program_Release_Status>
+    <Program_Install_Support>Install and Uninstall</Program_Install_Support>
+    <Program_OS_Support>Win2000,WinXP,Win7 x32,Win7 x64,Windows 8,Windows 10,WinServer,WinOther,Windows2000,Windows2003,Windows Server 2000,Windows Server 2003,Windows Server 2008,Windows Server 2008r2,Windows Server 2012,Windows Tablet PC Edition 2005,Windows Media Center Edition 2005,WinVista,Windows Vista Starter,Windows Vista Home Basic,Windows Vista Home Premium,Windows Vista Business,Windows Vista Enterprise,Windows Vista Ultimate,WinVista x64,Windows Vista Home Basic x64,Windows Vista Home Premium x64,Windows Vista Business x64,Windows Vista Enterprise x64,Windows Vista Ultimate x64</Program_OS_Support>
+    <Program_Language>English</Program_Language>
+    <Program_Category_Class>Graphic Apps::Icon Tools</Program_Category_Class>
+    <Expire_Info>
+      <Has_Expire_Info>N</Has_Expire_Info>
+      <Expire_Based_On>Days</Expire_Based_On>
+      <Expire_Count></Expire_Count>
+      <Expire_Other_Info></Expire_Other_Info>
+      <Expire_Month></Expire_Month>
+      <Expire_Day></Expire_Day>
+      <Expire_Year></Expire_Year>
+    </Expire_Info>
+    <Program_Categories>Font,Icon,Tools,Graphic,Apps</Program_Categories>
+    <Program_Cost_Other_Code></Program_Cost_Other_Code>
+    <Program_Cost_Other></Program_Cost_Other>
+    <Program_Change_Info></Program_Change_Info>
+    <Program_System_Requirements></Program_System_Requirements>
+    <Limitations></Limitations>
+    <Awards></Awards>
+    <Program_Specific_Category></Program_Specific_Category>
+    <Includes_JAVA_VM></Includes_JAVA_VM>
+    <Includes_VB_Runtime></Includes_VB_Runtime>
+    <Includes_DirectX></Includes_DirectX>
+    <FacebookProductPage></FacebookProductPage>
+    <GooglePlusProductPage></GooglePlusProductPage>
+  </Program_Info>
+  <Web_Info>
+    <Application_URLs>
+      <Application_Info_URL>https://github.com/uuware/icons-font-desktop</Application_Info_URL>
+      <Application_Screenshot_URL>https://github.com//uuware/icons-font-desktop/blob/main/dist/logo.png?raw=true</Application_Screenshot_URL>
+      <Application_Icon_URL>https://github.com/uuware/icons-font-desktop/blob/main/configuration/electron/icons/64x64.png?raw=true</Application_Icon_URL>
+      <Application_XML_File_URL>https://github.com/uuware/icons-font-desktop/blob/main/dist/app-pad.xml?raw=true</Application_XML_File_URL>
+      <Application_Order_URL></Application_Order_URL>
+    </Application_URLs>
+    <Download_URLs>
+      <Primary_Download_URL>https://github.com/uuware/icons-font-desktop/releases</Primary_Download_URL>
+      <Secondary_Download_URL></Secondary_Download_URL>
+      <Additional_Download_URL_1></Additional_Download_URL_1>
+      <Additional_Download_URL_2></Additional_Download_URL_2>
+    </Download_URLs>
+  </Web_Info>
+  <Permissions>
+    <Distribution_Permissions>The trial version of MySoftware can be freely distributed over the internet in an unchanged form</Distribution_Permissions>
+    <EULA>https://github.com/uuware/icons-font-desktop/blob/main/LICENSE</EULA>
+  </Permissions>
+  <AppStore>
+    <AppStore_AppID></AppStore_AppID>
+    <AppStore_Category></AppStore_Category>
+    <AppStore_Info_URL></AppStore_Info_URL>
+    <AppStore_Download_URL></AppStore_Download_URL>
+    <AppStore_Promo_Code_1></AppStore_Promo_Code_1>
+    <AppStore_Promo_Code_2></AppStore_Promo_Code_2>
+    <AppStore_Promo_Code_3></AppStore_Promo_Code_3>
+    <AppStore_Supported_Devices></AppStore_Supported_Devices>
+    <AppStore_Other_Applications></AppStore_Other_Applications>
+    <AppStore_Advantages_And_Unique_Features></AppStore_Advantages_And_Unique_Features>
+    <AppStore_Awards_And_Ratings></AppStore_Awards_And_Ratings>
+  </AppStore>
+  <Program_Descriptions>
+    <English>
+      <Keywords>free-icons-customization, free, SVG, ICON, Font, Web Fonts</Keywords>
+      <Char_Desc_45>A collection of over 33,000 free SVGs</Char_Desc_45>
+      <Char_Desc_80>A collection of over 33,000 free SVG icons for personal or business</Char_Desc_80>
+      <Char_Desc_250>Desktop version of free-icons-customization, a collection of over 33,000 high-quality free SVG icons and tools for generating customized icon font. All icons are completely free for personal or business requirements.</Char_Desc_250>
+      <Char_Desc_450>Desktop version of free-icons-customization, a collection of over 33,000 high-quality free SVG icons and tools for generating customized icon font. All icons are completely free for personal or business requirements. Open link: https://uuware.github.io/icons-font-customization/dist/ to view all icons. You can change colors, size for icons and download PNG / JPG / ICO / Apple ICNS image files. Available for Linux, MacOS and Windows.</Char_Desc_450>
+      <Char_Desc_2000>Desktop version of free-icons-customization, a collection of over 33,000 high-quality free SVG icons and tools for generating customized icon font. All icons are completely free for personal or business requirements. Open link: https://uuware.github.io/icons-font-customization/dist/ to view all icons. You can change color, background color, size for icons and can search or cache selected results, or download PNG / JPG / ICO / Apple ICNS image files directly from this link.
+icons-font-desktop is a desktop application, available for Linux, MacOS and Windows. Without run Node.JS / npm command, without open it in Visual Studio Code or Browser, you can easily generate your own web-fonts from selecting free SVG icons. It supports woff2, woff, ttf, eot, svg fonts, and also you can populate PNG / JPG / ICO / Apple ICNS image files.
+
+If you want to generate fonts in your web project, or to have more alternatives about icons, fonts and suggestions, please refer to sub-project: icons-font-customization at https://github.com/uuware/icons-font-customization.</Char_Desc_2000>
+    </English>
+  </Program_Descriptions>
+</XML_DIZ_INFO>
