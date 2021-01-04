@@ -89,8 +89,8 @@
       <Filename_Long></Filename_Long>
     </File_Info>
     <Program_Target_Platform>Windows</Program_Target_Platform>
-    <Program_Name>icons-font-desktop</Program_Name>
-    <Program_Version>1.1.3</Program_Version>
+    <Program_Name>icons-font-desktop for Windows</Program_Name>
+    <Program_Version>1.1.4</Program_Version>
     <Program_Release_Month>01</Program_Release_Month>
     <Program_Release_Day>04</Program_Release_Day>
     <Program_Release_Year>2021</Program_Release_Year>
@@ -133,7 +133,7 @@
       <Application_Order_URL></Application_Order_URL>
     </Application_URLs>
     <Download_URLs>
-      <Primary_Download_URL>https://github.com/uuware/icons-font-desktop/releases</Primary_Download_URL>
+      <Primary_Download_URL>https://github.com/uuware/icons-font-desktop/releases/download/v1.1.4/icons-font-desktop-Installer-1.1.4.exe</Primary_Download_URL>
       <Secondary_Download_URL></Secondary_Download_URL>
       <Additional_Download_URL_1></Additional_Download_URL_1>
       <Additional_Download_URL_2></Additional_Download_URL_2>
@@ -143,6 +143,9 @@
     <Distribution_Permissions>The trial version of MySoftware can be freely distributed over the internet in an unchanged form</Distribution_Permissions>
     <EULA>https://github.com/uuware/icons-font-desktop/blob/main/LICENSE</EULA>
   </Permissions>
+  <ASBMPlannerID1stRound>1</ASBMPlannerID1stRound>
+  <ASBMPlannerID2ndRound>2</ASBMPlannerID2ndRound>
+  <Issues>10</Issues>
   <AppStore>
     <AppStore_AppID></AppStore_AppID>
     <AppStore_Category></AppStore_Category>
@@ -158,12 +161,12 @@
   </AppStore>
   <Program_Descriptions>
     <English>
-      <Keywords>free-icons-customization, free, SVG, ICON, Font, Web Fonts</Keywords>
+      <Keywords>free-icons-customization, free, SVG, ICON, Font, Web Fonts, Open Source</Keywords>
       <Char_Desc_45>A collection of over 33,000 free SVGs</Char_Desc_45>
-      <Char_Desc_80>A collection of over 33,000 free SVG icons for personal or business</Char_Desc_80>
-      <Char_Desc_250>Desktop version of free-icons-customization, a collection of over 33,000 high-quality free SVG icons and tools for generating customized icon font. All icons are completely free for personal or business requirements.</Char_Desc_250>
-      <Char_Desc_450>Desktop version of free-icons-customization, a collection of over 33,000 high-quality free SVG icons and tools for generating customized icon font. All icons are completely free for personal or business requirements. Open link: https://uuware.github.io/icons-font-customization/dist/ to view all icons. You can change colors, size for icons and download PNG / JPG / ICO / Apple ICNS image files. Available for Linux, MacOS and Windows.</Char_Desc_450>
-      <Char_Desc_2000>Desktop version of free-icons-customization, a collection of over 33,000 high-quality free SVG icons and tools for generating customized icon font. All icons are completely free for personal or business requirements. Open link: https://uuware.github.io/icons-font-customization/dist/ to view all icons. You can change color, background color, size for icons and can search or cache selected results, or download PNG / JPG / ICO / Apple ICNS image files directly from this link.
+      <Char_Desc_80>Open Source, A collection of over 33,000 free SVG icons for personal or business</Char_Desc_80>
+      <Char_Desc_250>Open Source, Desktop version of free-icons-customization, a collection of over 33,000 high-quality free SVG icons and tools for generating customized icon font. All icons are completely free for personal or business requirements.</Char_Desc_250>
+      <Char_Desc_450>Open Source, Desktop version of free-icons-customization, a collection of over 33,000 high-quality free SVG icons and tools for generating customized icon font. All icons are completely free for personal or business requirements. Open link: https://uuware.github.io/icons-font-customization/dist/ to view all icons. You can change colors, size for icons and download PNG / JPG / ICO / Apple ICNS image files. Available for Linux, MacOS and Windows.</Char_Desc_450>
+      <Char_Desc_2000>Open Source, Desktop version of free-icons-customization, a collection of over 33,000 high-quality free SVG icons and tools for generating customized icon font. All icons are completely free for personal or business requirements. Open link: https://uuware.github.io/icons-font-customization/dist/ to view all icons. You can change color, background color, size for icons and can search or cache selected results, or download PNG / JPG / ICO / Apple ICNS image files directly from this link.
 icons-font-desktop is a desktop application, available for Linux, MacOS and Windows. Without run Node.JS / npm command, without open it in Visual Studio Code or Browser, you can easily generate your own web-fonts from selecting free SVG icons. It supports woff2, woff, ttf, eot, svg fonts, and also you can populate PNG / JPG / ICO / Apple ICNS image files.
 
 If you want to generate fonts in your web project, or to have more alternatives about icons, fonts and suggestions, please refer to sub-project: icons-font-customization at https://github.com/uuware/icons-font-customization.</Char_Desc_2000>
