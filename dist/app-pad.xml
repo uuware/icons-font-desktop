@@ -10,9 +10,9 @@
     <Company_UIN>CMP-0151045727</Company_UIN>
     <Company_Description>Providing free software in personal</Company_Description>
     <Product_UIN>APP-015104CD317</Product_UIN>
+    <Search_String>icons-font-desktop</Search_String>
     <Comments_For_Reviewer>Welcome to write reviews for this free software</Comments_For_Reviewer>
     <Publish_on_CD>TRUE</Publish_on_CD>
-    <Search_String>icons-font-desktop</Search_String>
     <RSProductType></RSProductType>
     <Press_Release_Search_String></Press_Release_Search_String>
     <NewsFeed_Search_String></NewsFeed_Search_String>
@@ -80,8 +80,8 @@
   <Program_Info>
     <File_Info>
       <Automatically_Detect_File_Size>Y</Automatically_Detect_File_Size>
-      <File_Size_K>113000</File_Size_K>
       <File_Size_Bytes>115712000</File_Size_Bytes>
+      <File_Size_K>113000</File_Size_K>
       <File_Size_MB>110.35</File_Size_MB>
       <Filename_Versioned></Filename_Versioned>
       <Filename_Previous></Filename_Previous>
@@ -127,9 +127,9 @@
   <Web_Info>
     <Application_URLs>
       <Application_Info_URL>https://github.com/uuware/icons-font-desktop</Application_Info_URL>
-      <Application_Screenshot_URL>https://github.com//uuware/icons-font-desktop/blob/main/dist/logo.png?raw=true</Application_Screenshot_URL>
-      <Application_Icon_URL>https://github.com/uuware/icons-font-desktop/blob/main/configuration/electron/icons/64x64.png?raw=true</Application_Icon_URL>
-      <Application_XML_File_URL>https://github.com/uuware/icons-font-desktop/blob/main/dist/app-pad.xml?raw=true</Application_XML_File_URL>
+      <Application_Screenshot_URL>https://uuware.github.io/icons-font-desktop/dist/logo.png</Application_Screenshot_URL>
+      <Application_Icon_URL>https://uuware.github.io/icons-font-desktop/configuration/electron/icons/32x32.png</Application_Icon_URL>
+      <Application_XML_File_URL>https://uuware.github.io/icons-font-desktop/dist/app-pad.xml</Application_XML_File_URL>
       <Application_Order_URL></Application_Order_URL>
     </Application_URLs>
     <Download_URLs>
