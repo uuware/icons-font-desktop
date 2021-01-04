@@ -180,8 +180,8 @@ exports.AppUtils = class AppUtils {
                             { type: 'separator' },
                             { role: 'selectAll' }
                         ]),
-                        { role: 'toggleDevTools' },
-                        { role: 'forceReload' },
+                        // { role: 'toggleDevTools' },
+                        // { role: 'forceReload' },
                     ]
             },
             {
